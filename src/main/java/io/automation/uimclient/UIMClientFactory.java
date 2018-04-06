@@ -11,11 +11,11 @@ public class UIMClientFactory {
 		
 	}
 	
-	public UIMClientFactory getInstance() {
+	public static UIMClientFactory getInstance() {
 		return instance;
 	}
 	
-	public UIMClient getUIMClient(Properties properties) {
+	public UIMClient getUIMClient() {
 		
 		UIMClientImpl client = new UIMClientImpl();
 		

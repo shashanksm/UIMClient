@@ -1,0 +1,14 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://xmlns.oracle.com/communications/inventory/webservice/service" xmlns:com="http://xmlns.oracle.com/communications/inventory/webservice/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:getServiceConfigurationRequest>
+        
+         <com:header>SOME_HEADER</com:header>
+         <expandedResponse>true</expandedResponse>
+         <serviceCriteria>
+           
+            <serviceId>112847143</serviceId>
+         </serviceCriteria>
+      </ser:getServiceConfigurationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
