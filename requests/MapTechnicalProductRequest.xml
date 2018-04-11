@@ -1,0 +1,34 @@
+<soapenv:Envelope xmlns:new="http://xmlns.accenture.com/communications/inventory/webservice/newcouim" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <new:mapTechnicalProductRequest>
+         <product>
+            <specification>
+               <name>FixedLineProduct</name>
+               <entityType>Service</entityType>
+            </specification>
+            <characteristics>
+               <name>Asset Integration ID</name>
+               <value>1-4V6Q2Q71</value>
+            </characteristics>
+            <characteristics>
+               <name>mappingName</name>
+               <value>ProductCode</value>
+            </characteristics>
+            <characteristics>
+               <name>mappingValue</name>
+               <value>PSTN_Single_Line</value>
+            </characteristics>
+            <characteristics>
+               <name>accountCategory</name>
+               <value>INDIVIDUAL</value>
+            </characteristics>
+            <action>ADD</action>
+			
+			
+           </product>
+         <commId>VVFG</commId>
+         <ordID>VVFG</ordID>
+      </new:mapTechnicalProductRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

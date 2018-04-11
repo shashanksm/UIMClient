@@ -1,0 +1,18 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:new="http://xmlns.accenture.com/communications/inventory/webservice/newcouim">
+<soapenv:Header/>
+   <soapenv:Body>
+		<new:changeStateRequest>
+			<services>
+				<state>pending disconnect</state>
+				<characteristics>
+					<name>Asset Integration ID</name>
+					<value>1-ABKR9C8L</value>
+				</characteristics>
+				<configurations>
+					<state>issued</state>
+				</configurations>
+			</services>
+		</new:changeStateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+

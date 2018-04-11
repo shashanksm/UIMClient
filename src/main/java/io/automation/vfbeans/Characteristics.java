@@ -1,4 +1,4 @@
-package io.automation.beans;
+package io.automation.vfbeans;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -11,7 +11,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class Characterstics {
+public class Characteristics {
 	private String name;
 	private String value;
 	
@@ -27,12 +27,12 @@ public class Characterstics {
 	public void setValue(String value) {
 		this.value = value;
 	}
-	public Characterstics(String name, String value) {
+	public Characteristics(String name, String value) {
 		super();
 		this.name = name;
 		this.value = value;
 	}
-	public Characterstics() {
+	public Characteristics() {
 		super();
 		this.name = "";
 		this.value = "";
@@ -114,3 +114,4 @@ public class Characterstics {
 		return document;
 	}
 }
+

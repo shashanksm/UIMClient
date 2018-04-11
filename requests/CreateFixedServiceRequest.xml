@@ -1,0 +1,32 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:new="http://xmlns.accenture.com/communications/inventory/webservice/newcouim">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <new:createFixedServiceRequest>
+         <services>
+            <name>FixedLineService</name>
+            <specification>
+               <name>FixedLineService</name>
+               <entityType>Service</entityType>
+            </specification>
+            <characteristics>
+               <name>accountCategory</name>
+               <value>INDIVIDUAL</value>
+            </characteristics>
+            <characteristics>
+               <name>ProductCode</name>
+               <value>PSTN_Single_Line</value>
+            </characteristics>
+            <characteristics>
+               <name>Asset Integration ID</name>
+               <value>1-4V6Q2Q71</value>
+            </characteristics>
+            <characteristics>
+               <name>ProductName</name>
+               <value>PSTN_Single_Line</value>
+            </characteristics>
+         </services>
+         <commId>ToolFL042</commId>
+         <ordID>ToolFL042</ordID>
+      </new:createFixedServiceRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

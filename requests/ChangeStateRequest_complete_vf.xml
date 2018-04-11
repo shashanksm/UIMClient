@@ -1,0 +1,18 @@
+<soapenv:Envelope xmlns:new="http://xmlns.accenture.com/communications/inventory/webservice/newcouim" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/> 
+   <soapenv:Body> 
+      <new:changeStateRequest> 
+         <services> 
+            <characteristics> 
+               <name>Asset Integration ID</name> 
+               <value>1-4V6Q2Q71</value> 
+            </characteristics> 
+            <configurations> 
+               <state>completed</state> 
+            </configurations> 
+         </services> 
+         <commId>VDF</commId> 
+         <ordID>VDF</ordID> 
+      </new:changeStateRequest> 
+   </soapenv:Body> 
+</soapenv:Envelope>

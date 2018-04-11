@@ -33,9 +33,11 @@ public class App
 				String[] parsedInputString = unparsedInputString.split("[\t,]+");
 				
 			
-				String serviceId = parsedInputString[0];
-				System.out.println(serviceId);
-				client.getServiceConfiguration(serviceId);
+				String aid = parsedInputString[0];
+				
+				client.createFixedService(aid);
+				
+				
 				
 			}
 			

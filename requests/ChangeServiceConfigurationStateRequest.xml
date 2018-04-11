@@ -1,0 +1,21 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://xmlns.oracle.com/communications/inventory/webservice/service" xmlns:com="http://xmlns.oracle.com/communications/inventory/webservice/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:changeServiceConfigurationStateRequest>
+         <!--Zero or more repetitions:-->
+         <com:header>SOME_HEADER</com:header>
+         <expandedResponse>true</expandedResponse>
+         <!--Optional:-->
+         <serviceCriteria>
+           
+            <serviceId>12</serviceId>
+         </serviceCriteria>
+         <!--Optional:-->
+        
+         <configurationAction>complete</configurationAction>
+       <!-- <configurationAction>issue</configurationAction>
+        <configurationAction>complete</configurationAction>-->
+         <stateChangePolicy>TransitionThisServiceOnly</stateChangePolicy>
+      </ser:changeServiceConfigurationStateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

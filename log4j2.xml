@@ -41,43 +41,41 @@
 			<AppenderRef ref="STDOUT"></AppenderRef>
 		</Root>
 		
-		<Logger name="org.main.utils.FileInputExtractionUnit" level="TRACE" additivity="false">
+		<Logger name="io.automation.utils.FileInputExtractionUnit" level="TRACE" additivity="false">
 			<AppenderRef ref="RollingFileAppender" />
+			<AppenderRef ref="STDOUT"></AppenderRef>
 		</Logger>
 		
-		<Logger name="org.main.utils.FileOutputPublishingUnit" level="TRACE" additivity="false">
+		<Logger name="io.automation.utils.FileOutputPublishingUnit" level="TRACE" additivity="false">
 			<AppenderRef ref="OutputFileAppender"/>
+			<AppenderRef ref="STDOUT"></AppenderRef>
 		</Logger>
 		
-		<Logger name="org.main.logic.WorkaroundsAPIImpl" level="TRACE" additivity="false">
+		<Logger name="io.automation.dbclient.DBClient" level="TRACE" additivity="false">
 			<AppenderRef ref="RollingFileAppender" />
 			<AppenderRef ref="STDOUT"></AppenderRef>
 		</Logger>
 		
-		<Logger name="org.main.sei.OSMServiceImpl" level="TRACE" additivity="false">
+		<Logger name="io.automation.siebel.SiebelDBClient" level="TRACE" additivity="false">
 			<AppenderRef ref="RollingFileAppender" />
 			<AppenderRef ref="STDOUT"></AppenderRef>
 		</Logger>
 		
-		<Logger name="org.main.sei.OSMServiceFactory" level="TRACE" additivity="false">
+		<Logger name="io.automation.uimclient.UIMClient" level="TRACE" additivity="false">
 			<AppenderRef ref="RollingFileAppender" />
+			<AppenderRef ref="STDOUT"></AppenderRef>
 		</Logger>
 		
-		<Logger name="org.main.sei.XmlApiServiceImpl" level="TRACE" additivity="false">
+		<Logger name="io.automation.uimclient.UIMClientFactory" level="TRACE" additivity="false">
 			<AppenderRef ref="RollingFileAppender" />
+			<AppenderRef ref="STDOUT"></AppenderRef>
 		</Logger>
 		
-		<Logger name="org.main.sei.XmlApiServiceFactory" level="TRACE" additivity="false">
+		<Logger name="io.automation.uimdbclient.UIMDBClient" level="TRACE" additivity="false">
 			<AppenderRef ref="RollingFileAppender" />
+			<AppenderRef ref="STDOUT"></AppenderRef>
 		</Logger>
 		
-		<Logger name="org.main.utils.CommonUtils" level="TRACE" additivity="false">
-			<AppenderRef ref="RollingFileAppender" />
-		</Logger>
-		
-		<Logger name="LastTaskLogger" level="TRACE" additivity="false">
-			<AppenderRef ref="LastTaskAppender" />
-		</Logger>
 		
 	</Loggers>
 </Configuration>
