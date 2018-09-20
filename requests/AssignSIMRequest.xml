@@ -1,0 +1,57 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://xmlns.oracle.com/communications/inventory/webservice/service" xmlns:com="http://xmlns.oracle.com/communications/inventory/webservice/common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:invchar="http://xmlns.oracle.com/communications/inventory/webservice/characteristic">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:updateServiceConfigurationRequest>
+         <com:requestContext>
+            <com:messageConfirmation>ignore</com:messageConfirmation>
+         </com:requestContext>
+         <expandedResponse>true</expandedResponse>
+         <orderData>
+            <orderHeaderData>
+               <orderId>10101</orderId>
+               <orderDate>2017-10-10T12:00:00-05:00</orderDate>
+               <orderType>new</orderType>
+            </orderHeaderData>
+            <orderDetailData>
+               <orderAction>add</orderAction>
+               <party>
+                  <id>10</id>
+                  <services xsi:type="ser:ServiceDataType">
+                     <id></id>
+                     <specification>
+                        <name>MobileService</name>
+                        <entityType>Service</entityType>
+                        
+                     </specification>
+                     <configurations>
+                        <version></version>
+                        <id></id>
+                        <configSpec>
+                           <name>MobileServiceConfiguration</name>
+                           <entityType>Service Configuration</entityType>
+                           
+                        </configSpec>
+                        <configurationItems xsi:type="ser:ServiceConfigurationItemDataType">
+                           <resourceAssignment xsi:type="ser:ResourceAssignmentDataType">
+                              <resource>
+                                 <id></id>
+                                 <type>LOGICAL_DEVICE</type>
+                                 <specification>
+                                    <name>SIM</name>
+                                    <entityType>Logical Device</entityType>
+                                 </specification>
+                              </resource>
+                              <assignmentAction>assign</assignmentAction>
+                           </resourceAssignment>
+                           <path>SIM</path>
+                        </configurationItems>
+                     </configurations>
+                     <serviceAction>none</serviceAction>
+                  </services>
+                  <partyAction>none</partyAction>
+               </party>
+            </orderDetailData>
+         </orderData>
+      </ser:updateServiceConfigurationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

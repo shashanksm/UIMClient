@@ -11,6 +11,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import io.automation.beans.ActiveProductsRecordBean;
+import io.automation.beans.BroadbandDetailsBean;
+import io.automation.beans.CancellationDataBean;
 import io.automation.beans.OrderLineItemsRecordBean;
 import io.automation.dbclient.DBClient;
 
@@ -85,7 +87,76 @@ public class SiebelDBClient extends DBClient	{
 		logger.traceExit();
 		return activeProducts;
 	}
-
+	
+	
+	public BroadbandDetailsBean getBroadBandDetails(String serviceNumber) {
+		BroadbandDetailsBean bean = null;
+		
+		logger.traceEntry();
+		
+		String sql = "select a.integration_id AID, ac.attrib_68 AccountCategory, sxc.x_vf_tech_prod_name TechProductName, sxc.x_vf_tech_prod_code TechProductCode "
+				+ "from siebel.s_asset a, siebel.s_org_ext ext, siebel.s_org_ext_x ac, siebel.s_asset_x sxc "
+				+ "where a.owner_accnt_id = ext.row_id "
+				+ "and ext.par_row_id = ac.row_id  and sxc.ROW_ID = a.service_point_id and a.status_cd = 'Active' and a. service_point_id is not null "
+				+ "and a. root_asset_id in (select root_asset_id from siebel.s_asset where serial_num in ('"
+				+ serviceNumber
+				+ "'))";
+		
+		Statement statement = null;
+		ResultSet rs = null;
+		try {
+			
+			statement = connection.createStatement();
+			
+			rs = statement.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				String aid = "dummy";
+				String accountCategory = rs.getString(2);
+				String techProductName = rs.getString(3);
+				String techProductCode = rs.getString(4);
+				
+				bean = new BroadbandDetailsBean(aid, accountCategory, techProductName, techProductCode);
+			}
+			
+			sql = "select integration_id from siebel.s_asset  where serial_num in ('"+serviceNumber+"')";
+			rs.close();
+			rs = statement.executeQuery(sql);
+			while(rs.next()) {
+				
+				String aid = rs.getString(1);
+				bean.setAid(aid);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			if(statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}	
+		}
+		
+		logger.traceExit();
+		
+		return bean;
+	}
+	
 	
 	public void logActiveProducts(String ctn, Logger outLog) {
 		logger.traceEntry();
@@ -230,5 +301,75 @@ public class SiebelDBClient extends DBClient	{
 		
 		logger.traceExit();
 		return orderLineItemsRecordBeans;
+	}
+	
+	public CancellationDataBean getCancellationData(String order_number){
+		
+		CancellationDataBean cancellationDataBean = null;
+		logger.traceEntry();
+		
+		String sql = "select o.order_num, itm.service_num as \"CTN\", e.X_VF_CUSTOMER_CODE as \"Account number\", ox.ATTRIB_34 as \"Channel\", o.carrier_prio_cd, ordx.attrib_55 as \"Order TypeCode1\", ox.x_vf_is_return_2 as \"Order TypeCode 2\" ,itm.asset_integ_id, pcn.PRODUCT_CLASS_NAME,itm.action_cd "
+				+ "six.attrib_36,sx.attrib_55,to_char(s.created,'DD-MON-YYYY HH24:MM:SS'),si.bill_accnt_id,si.bill_profile_id "
+				+ "from "
+				+ "siebel.s_order o, siebel.s_order_x ox, siebel.s_order_item itm,  siebel.s_prod_int p,PRODUCT_CLASS_NAME pcn, siebel.s_org_ext e, siebel.s_order_x ordx "
+				+ "where itm.order_id = o.row_id "
+				+ "and pcn.Prod_id = itm.prod_id "
+				+ "and ox.par_row_id= o.row_id "
+				+ "and itm.prod_id = p.row_id "
+				+ "and o.accnt_id = e.row_id "
+				+ "and o.row_id = ordx.par_row_id "
+				+ "and pcn.PRODUCT_CLASS_NAME in ('Mobile Service','Mobile Broadband Service') "
+				+ "and o.order_num in ('"
+				+ order_number
+				+ "')";
+		
+		Statement statement = null;
+		ResultSet rs = null;
+		try {
+			
+			statement = connection.createStatement();
+			
+			rs = statement.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				String orderType = "";
+				String orderTypeCode1 = rs.getString(6);
+				String orderTypeCode2 = rs.getString(7);
+				String previousCtn = rs.getString(1);
+				String currentCtn = rs.getString(2);
+				String previousSim = rs.getString(1);
+				String currentSim = rs.getString(1);
+				String previousAID = rs.getString(1);
+				String currentAID = rs.getString(1);
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			if(statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}	
+		}
+		
+		logger.traceExit();
+		return cancellationDataBean;
 	}
 }

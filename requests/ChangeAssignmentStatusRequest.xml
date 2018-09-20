@@ -1,0 +1,15 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:new="http://xmlns.accenture.com/communications/inventory/webservice/newcouim">
+	<soapenv:Header/>
+	<soapenv:Body>
+		<new:changeAssignmentStatusRequest>
+			<resourceAssignment>
+				<state>Unassigned</state>
+				<resource>
+					<id></id>
+					<type>TELEPHONE-NUMBER</type>
+
+				</resource>
+			</resourceAssignment>
+		</new:changeAssignmentStatusRequest>
+	</soapenv:Body>
+</soapenv:Envelope>
